@@ -3,11 +3,11 @@ Pod::Spec.new do |s|
   url            = "https://github.com/seivan/#{name}"
   git_url        = "#{url}.git"
   s.name         = name
-  version        = "2.0.0"
+  version        = "2.1.0"
   source_files   = "#{name}/**/*.{h,m}"
 
   s.version      = version
-  s.summary      = "Blocks for UINavigationController life cycle willShow and didShow - swizzle free!"
+  s.summary      = "Blocks for UINavigationController life cycle willShow & didShow and animations for transitions & interaction - swizzle free!"
   s.description  = <<-DESC
 
                     * Swizzle and junk free
