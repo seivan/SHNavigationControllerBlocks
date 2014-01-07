@@ -76,13 +76,13 @@
   __block BOOL didAssert = NO;
   
   __weak typeof(self) weakSelf = self;
-  [self.navCon SH_setInteractiveTransitioningBlock:^id<UIViewControllerInteractiveTransitioning>(UINavigationController *navigationController, id<UIViewControllerAnimatedTransitioning> animationController) {
+  [self.navCon SH_setInteractiveControllerBlock:^id<UIViewControllerInteractiveTransitioning>(UINavigationController *navigationController, id<UIViewControllerAnimatedTransitioning> animationController) {
     XCTAssertEqualObjects(weakSelf.navCon, navigationController);
     didAssert = YES;
     return UIPercentDrivenInteractiveTransition.new;
 
   }];
-  UIPercentDrivenInteractiveTransition * percentTrans = self.navCon.SH_blockInteractiveTransitioning(self.navCon, nil);
+  UIPercentDrivenInteractiveTransition * percentTrans = self.navCon.SH_blockInteractiveController(self.navCon, nil);
   XCTAssert(percentTrans);
   XCTAssertEqualObjects([percentTrans class], [UIPercentDrivenInteractiveTransition class]);
   XCTAssertTrue(didAssert);
@@ -93,7 +93,7 @@
   
   __weak typeof(self) weakSelf = self;
   SHTestedAnimationController  * animation = SHTestedAnimationController.new;
-  [self.navCon SH_setAnimatedTransitioningBlock:^id<UIViewControllerAnimatedTransitioning>(UINavigationController *navigationController, UINavigationControllerOperation operation, UIViewController *fromVC, UIViewController *toVC) {
+  [self.navCon SH_setAnimatedControllerBlock:^id<UIViewControllerAnimatedTransitioning>(UINavigationController *navigationController, UINavigationControllerOperation operation, UIViewController *fromVC, UIViewController *toVC) {
 
     XCTAssertEqualObjects(weakSelf.navCon, navigationController);
     XCTAssertEqual(UINavigationControllerOperationPush, operation);
@@ -102,7 +102,7 @@
     didAssert = YES;
     return animation;
   }];
-  id<UIViewControllerAnimatedTransitioning> animatedTrans = self.navCon.SH_blockAnimatedTransitioning(self.navCon, UINavigationControllerOperationPush, self.navCon.viewControllers.firstObject, self.vc);
+  id<UIViewControllerAnimatedTransitioning> animatedTrans = self.navCon.SH_blockAnimatedController(self.navCon, UINavigationControllerOperationPush, self.navCon.viewControllers.firstObject, self.vc);
   XCTAssert(animatedTrans);
   XCTAssertEqualObjects(animation, animatedTrans);
   XCTAssertTrue(didAssert);
