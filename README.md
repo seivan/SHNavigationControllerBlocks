@@ -1,3 +1,6 @@
+Deprecated, please use [RxCocoa](https://github.com/ReactiveX/RxSwift) 
+
+
 SHNavigationControllerBlocks
 ==========
 [![CI Status](https://img.shields.io/travis/seivan/SHNavigationControllerBlocks.svg?style=flat)](https://travis-ci.org/seivan/SHNavigationControllerBlocks)
